@@ -33,7 +33,7 @@ function getTwoThirdNight(fajrhour,fajrmin, magribhour, magribmin){
 function setTwoThirdNight(){
     if(document.querySelector('#fajrtime').value !='' && document.querySelector('#magribtime').value !=''){
     let twothirdNight = getTwoThirdNight(...document.querySelector('#fajrtime').value.split(':'), ...document.querySelector('#magribtime').value.split(':'))
-    document.querySelector('#placeholder').innerText = "Last Third Night: "+ twothirdNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric'})
+    document.querySelector('#placeholder').innerText = "Last Third Night Begins At: "+ twothirdNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric'})
 }
 }
 
