@@ -1,7 +1,7 @@
 {
   "short_name": "LastThirdNightCalc",
   "name": "LastThirdNightCalc",
-  "start_url": "/last-third-night-calculator",
+  "start_url": "/last-third-night-calculator/",
   "display": "standalone",
   "theme_color": "#0d6efd",
   "background_color": "#ffffff",
