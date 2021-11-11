@@ -21,10 +21,14 @@ function getTwoThirdNight(fajrhour,fajrmin, magribhour, magribmin){
     let fajrDate = new Date()
     fajrDate.setHours(fajrhour)
     fajrDate.setMinutes(fajrmin)
-    // increase fajr date by one day if fajr is next day i.e in AM and magrib is in PM
-    if( magribDate.toLocaleString('en-US', { hour12: true }).trim().endsWith('PM') && fajrDate.toLocaleString('en-US', { hour12: true }).trim().endsWith('AM'))
-    fajrDate.setDate(fajrDate.getDate()+1);
-    let diff = Math.abs(fajrDate - magribDate)
+
+    let diff;
+    // Calculate the time from fajr to magrib and subtract it with 1 day in millis to get the time between magrib and fajr
+    if(magribDate>fajrDate)
+    diff = 86400000 - (magribDate - fajrDate)
+    // Calculate the time from magrib to fajr as fajrDate is bigger than magribDate
+    else
+    diff = fajrDate - magribDate
     let twothirdNight = new Date(magribDate.getTime()+(diff*2/3)) 
     return twothirdNight
     
