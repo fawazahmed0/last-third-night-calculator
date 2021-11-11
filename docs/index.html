@@ -16,9 +16,9 @@
     <script>
 function getTwoThirdNight(fajrhour,fajrmin, magribhour, magribmin){
     let magribDate = new Date()
+    let fajrDate = new Date(magribDate)
     magribDate.setHours(magribhour)
     magribDate.setMinutes(magribmin)
-    let fajrDate = new Date()
     fajrDate.setHours(fajrhour)
     fajrDate.setMinutes(fajrmin)
 
