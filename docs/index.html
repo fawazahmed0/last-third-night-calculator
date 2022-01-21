@@ -14,7 +14,7 @@
 
 
     <script>
-function getTwoThirdNight(fajrhour,fajrmin, magribhour, magribmin){
+function getPartNight(fajrhour,fajrmin, magribhour, magribmin){
     let magribDate = new Date()
     let fajrDate = new Date(magribDate)
     magribDate.setHours(magribhour)
@@ -30,14 +30,16 @@ function getTwoThirdNight(fajrhour,fajrmin, magribhour, magribmin){
     else
     diff = fajrDate - magribDate
     let twothirdNight = new Date(magribDate.getTime()+(diff*2/3)) 
-    return twothirdNight
+    let halfNight = new Date(magribDate.getTime()+(diff*1/2)) 
+    return [halfNight,twothirdNight]
     
 }
 
-function setTwoThirdNight(){
+function setPartNight(){
     if(document.querySelector('#fajrtime').value !='' && document.querySelector('#magribtime').value !=''){
-    let twothirdNight = getTwoThirdNight(...document.querySelector('#fajrtime').value.split(':'), ...document.querySelector('#magribtime').value.split(':'))
-    document.querySelector('#placeholder').innerText = "Last Third Night Begins At: "+ twothirdNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric'})
+    let [halfNight,twothirdNight ]= getPartNight(...document.querySelector('#fajrtime').value.split(':'), ...document.querySelector('#magribtime').value.split(':'))
+    document.querySelector('#placeholder').innerText = "Last Third Night Begins At: "+ twothirdNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric'}) +
+    "\nMid Night Begins At: "+ halfNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric'})
 }
 }
 
@@ -51,14 +53,15 @@ if ('serviceWorker' in navigator) { navigator.serviceWorker.register('service-wo
     <div class="input-group">
         
         <label for="fajrtime" class="m-2">Enter Fajr Time: </label>
-        <input id="fajrtime" class="m-2" type="time" name="fajrtime" oninput="setTwoThirdNight()"><br>
+        <input id="fajrtime" class="m-2" type="time" name="fajrtime" oninput="setPartNight()"><br>
         <label for="magribtime" class="m-2">Enter Magrib Time: </label>
-        <input id="magribtime" class="m-2" type="time" name="magribtime" oninput="setTwoThirdNight()">
+        <input id="magribtime" class="m-2" type="time" name="magribtime" oninput="setPartNight()">
 
     </div>
 
     <div id='placeholder' class="border fs-5 text text-center">
-        Last Third Night: Result will show here
+        Last Third Night: Result will show here <br>
+        Mid Night: Result will show here
     </div>
     <br>
     <br>
