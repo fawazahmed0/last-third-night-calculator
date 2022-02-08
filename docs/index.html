@@ -38,8 +38,8 @@ function getPartNight(fajrhour,fajrmin, magribhour, magribmin){
 function setPartNight(){
     if(document.querySelector('#fajrtime').value !='' && document.querySelector('#magribtime').value !=''){
     let [halfNight,twothirdNight ]= getPartNight(...document.querySelector('#fajrtime').value.split(':'), ...document.querySelector('#magribtime').value.split(':'))
-    document.querySelector('#placeholder').innerText = "Last Third Night Begins At: "+ twothirdNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric'}) +
-    "\nMid Night Begins At: "+ halfNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric'})
+    document.querySelector('#placeholder').innerText = "Mid Night Begins At: "+ halfNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric'}) +
+    "\nLast Third Night Begins At: "+ twothirdNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric'})  
 }
 }
 
@@ -60,8 +60,8 @@ if ('serviceWorker' in navigator) { navigator.serviceWorker.register('service-wo
     </div>
 
     <div id='placeholder' class="border fs-5 text text-center">
-        Last Third Night: Result will show here <br>
-        Mid Night: Result will show here
+        Mid Night: Result will show here <br>
+        Last Third Night: Result will show here 
     </div>
     <br>
     <br>
