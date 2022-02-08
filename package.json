@@ -4,7 +4,8 @@
   "description": "Calculate last third night for praying",
   "scripts": {
     "start": "parcel code/*.html --https",
-    "build": "parcel build code/*.html --dist-dir docs"
+    "prebuild": "npx rimraf docs",
+    "build": "parcel build code/*.html --dist-dir docs --public-url ./"
   },
   "repository": {
     "type": "git",
