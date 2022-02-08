@@ -1,0 +1,32 @@
+{
+  "name": "last-third-night-calculator",
+  "version": "1.0.0",
+  "description": "Calculate last third night for praying",
+  "scripts": {
+    "start": "parcel code/*.html --https",
+    "build": "parcel build code/*.html --dist-dir docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fawazahmed0/last-third-night-calculator.git"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fawazahmed0/last-third-night-calculator/issues"
+  },
+  "homepage": "https://github.com/fawazahmed0/last-third-night-calculator#readme",
+  "devDependencies": {
+    "@parcel/packager-raw-url": "^2.2.1",
+    "@parcel/transformer-webmanifest": "^2.2.1",
+    "parcel": "^2.2.1",
+    "parcel-transformer-ogimage": "^1.0.1"
+  },
+  "dependencies": {
+    "parcel-reporter-static-files-copy": "^1.3.4",
+    "solar-calc": "^1.1.0"
+  }
+}
