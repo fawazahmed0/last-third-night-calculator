@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "parcel-reporter-static-files-copy": "^1.3.4",
-    "solar-calc": "^1.1.0"
+    "solar-calc": "github:fawazahmed0/solar-calc"
   }
 }
