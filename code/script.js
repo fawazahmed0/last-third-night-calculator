@@ -35,7 +35,10 @@ window.setPartNightAndHijri = function () {
         let dateoffset = parseInt(document.querySelector('#dateoffset').value || '0')
         Cookies.set('dateoffset', dateoffset, { expires: 36500 })
         hijriDate.setDate(hijriDate.getDate() + dateoffset)
-        document.querySelector('#hijridate').innerText = new Intl.DateTimeFormat(['islamic','islamic-tbla','islamic-umalqura','islamic-rgsa','islamic-civil'].map(e=>'en-u-ca-'+e),{dateStyle:'long' }).format(hijriDate)
+        let hijriString = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'numeric',day: 'numeric',calendar:'islamic'}).format(hijriDate)
+        let hijriArr = hijriString.split(' ')[0].split('/')
+        document.querySelector('#hijridate').innerText =  hijriArr[1]+ ' ' + IslamicMonths[hijriArr[0]-1]   + ' ' + hijriArr[2] + ' AH'
+        // new Intl.DateTimeFormat(['islamic','islamic-tbla','islamic-umalqura','islamic-rgsa','islamic-civil'].map(e=>'en-u-ca-'+e),{dateStyle:'long' }).format(hijriDate)
         document.querySelector('#datespan').removeAttribute("hidden")   
         }
 }
@@ -77,5 +80,5 @@ function ready() {
 
 import * as SolarCalc from 'solar-calc'
 import Cookies from 'js-cookie'
-
+var IslamicMonths = ["Muharram","Safar","Rabiʻ I","Rabiʻ II","Jumada I","Jumada II","Rajab","Shaʻban","Ramadan","Shawwal","Dhuʻl-Qiʻdah","Dhuʻl-Hijjah"]
 document.addEventListener("DOMContentLoaded", ready);
