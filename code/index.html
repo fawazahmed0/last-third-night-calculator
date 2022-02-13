@@ -25,14 +25,14 @@
             <div class="input-group d-flex justify-content-center">
 
                 <label for="fajrtime" class="m-2">Enter Fajr Time: </label>
-                <input id="fajrtime" class="m-2" type="time" name="fajrtime" oninput="setPartNight()">
+                <input id="fajrtime" class="m-2" type="time" name="fajrtime" oninput="setPartNightAndHijri()">
             </div>
 
 
             <div class="input-group d-flex justify-content-center">
 
                 <label for="magribtime" class="m-2">Enter Magrib Time: </label>
-                <input id="magribtime" class="m-2" type="time" name="magribtime" oninput="setPartNight()">
+                <input id="magribtime" class="m-2" type="time" name="magribtime" oninput="setPartNightAndHijri()">
             </div>
 
             <div class="input-group d-flex justify-content-center">
@@ -46,8 +46,12 @@
 
 
             <div id='placeholder' class="border fs-5 text text-center">
-                Mid Night: Result will show here <br>
-                Last Third Night: Result will show here
+                Last Third Night: <span id="lastthird">Result will show here</span><br>
+                <span class="text-muted">
+                    Mid Night: <span id="midnight">Result will show here</span><br>
+                    Islamic Date: <span id="hijridate">Result will show here</span><br>
+                </span>
+                
             </div>
             <br>
             <br>

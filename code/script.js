@@ -1,4 +1,4 @@
-function getPartNight(fajrhour, fajrmin, magribhour, magribmin) {
+function getPartNightAndHijri(fajrhour, fajrmin, magribhour, magribmin) {
     let magribDate = new Date()
     let fajrDate = new Date(magribDate)
     magribDate.setHours(magribhour)
@@ -15,22 +15,30 @@ function getPartNight(fajrhour, fajrmin, magribhour, magribmin) {
         diff = fajrDate - magribDate
     let twothirdNight = new Date(magribDate.getTime() + (diff * 2 / 3))
     let halfNight = new Date(magribDate.getTime() + (diff * 1 / 2))
-    return [halfNight, twothirdNight]
+
+    let todayHijri = new Date();
+    // if sun has already set, then increase the date by 1 day
+    if(magribDate<todayHijri)
+    todayHijri.setDate(todayHijri.getDate() + 1)
+
+    return [halfNight, twothirdNight, todayHijri]
 
 }
 
-window.setPartNight = function () {
+window.setPartNightAndHijri = function () {
     if (document.querySelector('#fajrtime').value != '' && document.querySelector('#magribtime').value != '') {
-        let [halfNight, twothirdNight] = getPartNight(...document.querySelector('#fajrtime').value.split(':'), ...document.querySelector('#magribtime').value.split(':'))
-        document.querySelector('#placeholder').innerText = "Mid Night Begins At: " + halfNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric' }) +
-            "\nLast Third Night Begins At: " + twothirdNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric' })
-    }
+        let [halfNight, twothirdNight, hijriDate] = getPartNightAndHijri(...document.querySelector('#fajrtime').value.split(':'), ...document.querySelector('#magribtime').value.split(':'))
+        
+        document.querySelector('#hijridate').innerText = new Intl.DateTimeFormat(['islamic','islamic-tbla','islamic-umalqura','islamic-rgsa','islamic-civil'].map(e=>'en-u-ca-'+e),{dateStyle:'long' }).format(hijriDate)
+        document.querySelector('#midnight').innerText = halfNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric' }) 
+        document.querySelector('#lastthird').innerText = twothirdNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric' })
+           
+        }
 }
 
 window.autoDetectWithCoords = function () {
     if ('geolocation' in navigator)
         navigator.geolocation.getCurrentPosition(pos => {
-
             var solar = new SolarCalc(new Date(), pos.coords.latitude, pos.coords.longitude);
             let fajrDate = solar.astronomicalDawn;
             let magribDate = solar.sunset;
@@ -38,8 +46,7 @@ window.autoDetectWithCoords = function () {
             document.querySelector('#fajrtime').value = fajrDate.toLocaleString('default', { hour: 'numeric', minute: 'numeric', hour12: false })
             document.querySelector('#magribtime').value = magribDate.toLocaleString('default', { hour: 'numeric', minute: 'numeric', hour12: false })
 
-
-            setPartNight()
+            setPartNightAndHijri()
 
 
         })
