@@ -28,11 +28,15 @@ function getPartNightAndHijri(fajrhour, fajrmin, magribhour, magribmin) {
 window.setPartNightAndHijri = function () {
     if (document.querySelector('#fajrtime').value != '' && document.querySelector('#magribtime').value != '') {
         let [halfNight, twothirdNight, hijriDate] = getPartNightAndHijri(...document.querySelector('#fajrtime').value.split(':'), ...document.querySelector('#magribtime').value.split(':'))
-        
-        document.querySelector('#hijridate').innerText = new Intl.DateTimeFormat(['islamic','islamic-tbla','islamic-umalqura','islamic-rgsa','islamic-civil'].map(e=>'en-u-ca-'+e),{dateStyle:'long' }).format(hijriDate)
-        document.querySelector('#midnight').innerText = halfNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric' }) 
+
         document.querySelector('#lastthird').innerText = twothirdNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric' })
-           
+        document.querySelector('#midnight').innerText = halfNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric' }) 
+        
+        let dateoffset = parseInt(document.querySelector('#dateoffset').value || '0')
+        Cookies.set('dateoffset', dateoffset, { expires: 36500 })
+        hijriDate.setDate(hijriDate.getDate() + dateoffset)
+        document.querySelector('#hijridate').innerText = new Intl.DateTimeFormat(['islamic','islamic-tbla','islamic-umalqura','islamic-rgsa','islamic-civil'].map(e=>'en-u-ca-'+e),{dateStyle:'long' }).format(hijriDate)
+        document.querySelector('#datespan').removeAttribute("hidden")   
         }
 }
 
@@ -65,6 +69,7 @@ function ready() {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
 
+    document.querySelector('#dateoffset').value = Cookies.get('dateoffset') || '0'
 
 
 }
@@ -72,3 +77,4 @@ function ready() {
 document.addEventListener("DOMContentLoaded", ready);
 
 import * as SolarCalc from 'solar-calc'
+import Cookies from 'js-cookie'
