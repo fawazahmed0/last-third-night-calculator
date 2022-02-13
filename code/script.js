@@ -74,7 +74,8 @@ function ready() {
 
 }
 
-document.addEventListener("DOMContentLoaded", ready);
 
 import * as SolarCalc from 'solar-calc'
 import Cookies from 'js-cookie'
+
+document.addEventListener("DOMContentLoaded", ready);
