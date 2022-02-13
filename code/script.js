@@ -33,13 +33,13 @@ window.setPartNightAndHijri = function () {
         document.querySelector('#midnight').innerText = halfNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric' }) 
         
         let dateoffset = parseInt(document.querySelector('#dateoffset').value || '0')
-        Cookies.set('dateoffset', dateoffset, { expires: 36500 })
+        document.querySelector('#datespan').removeAttribute("hidden")   
         hijriDate.setDate(hijriDate.getDate() + dateoffset)
         let hijriString = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'numeric',day: 'numeric',calendar:'islamic'}).format(hijriDate)
         let hijriArr = hijriString.split(' ')[0].split('/')
         document.querySelector('#hijridate').innerText =  hijriArr[1]+ ' ' + IslamicMonths[hijriArr[0]-1]   + ' ' + hijriArr[2] + ' AH'
+        Cookies.set('dateoffset', dateoffset, { expires: 36500 })
         // new Intl.DateTimeFormat(['islamic','islamic-tbla','islamic-umalqura','islamic-rgsa','islamic-civil'].map(e=>'en-u-ca-'+e),{dateStyle:'long' }).format(hijriDate)
-        document.querySelector('#datespan').removeAttribute("hidden")   
         }
 }
 
