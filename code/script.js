@@ -33,7 +33,7 @@ window.setPartNightAndHijri = function () {
         document.querySelector('#midnight').innerText = halfNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric' }) 
         
         let dateoffset = parseInt(document.querySelector('#dateoffset').value || '0')
-        document.querySelector('#datespan').removeAttribute("hidden")   
+        document.querySelector('#datepencil').removeAttribute("hidden") 
         hijriDate.setDate(hijriDate.getDate() + dateoffset)
         let hijriString = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'numeric',day: 'numeric',calendar:'islamic'}).format(hijriDate)
         let hijriArr = hijriString.split(' ')[0].split('/')
