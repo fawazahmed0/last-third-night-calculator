@@ -43,7 +43,6 @@ window.setPartNightAndHijri = function () {
         calendarDate.setDate(hijriArr[1])
         // zero indexed month
         calendarDate.setMonth(hijriArr[0]-1)
-        calendarDate.setFullYear(hijriArr[2])
         while(true){
             calendarDate.setFullYear(calendarDate.getFullYear()-1)
             if(calendarDate.getDay() == todayDay)
