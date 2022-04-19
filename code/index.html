@@ -100,7 +100,8 @@
         </div>
         <div class="container">
             <span class="float-start text-muted">
-                <span id="hijridate"></span>
+                <label for="dateInput" type="button" class="btn border" id="hijridate"></label>
+                <input type="date" id="dateInput" oninput="setPartNightAndHijri()" class="visually-hidden"/>
                 
                 <button onclick="getElementById('dateoffsetspan').classList.toggle('d-none')" hidden id="datepencil"
                     data-bs-toggle="tooltip" title="If Date is wrong, you can change it manually by clicking here" type="button"

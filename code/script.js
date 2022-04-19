@@ -38,6 +38,18 @@ window.setPartNightAndHijri = function () {
         let hijriString = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'numeric',day: 'numeric',calendar:'islamic'}).format(hijriDate)
         let hijriArr = hijriString.split(' ')[0].split('/')
         document.querySelector('#hijridate').innerText =  hijriArr[1]+ ' ' + IslamicMonths[hijriArr[0]-1]   + ' ' + hijriArr[2] + ' AH'
+        let todayDay = new Date().getDay()
+        let calendarDate = new Date()
+        calendarDate.setDate(hijriArr[1])
+        // zero indexed month
+        calendarDate.setMonth(hijriArr[0]-1)
+        calendarDate.setFullYear(hijriArr[2])
+        while(true){
+            calendarDate.setFullYear(calendarDate.getFullYear()-1)
+            if(calendarDate.getDay() == todayDay)
+                break
+        }
+        document.querySelector('#dateInput').value = calendarDate.toLocaleDateString('en-CA')
         Cookies.set('dateoffset', dateoffset, { expires: 36500 })
         // new Intl.DateTimeFormat(['islamic','islamic-tbla','islamic-umalqura','islamic-rgsa','islamic-civil'].map(e=>'en-u-ca-'+e),{dateStyle:'long' }).format(hijriDate)
         }
