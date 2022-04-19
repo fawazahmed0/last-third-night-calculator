@@ -100,7 +100,7 @@
         </div>
         <div class="container">
             <span class="float-start text-muted">
-                <label for="dateInput" type="button" class="btn border" id="hijridate"></label>
+                <label for="dateInput" type="button" class="btn border" id="hijridate" onclick="getElementById('dateInput').showPicker()"></label>
                 <input type="date" id="dateInput" oninput="setPartNightAndHijri()" class="visually-hidden"/>
                 
                 <button onclick="getElementById('dateoffsetspan').classList.toggle('d-none')" hidden id="datepencil"

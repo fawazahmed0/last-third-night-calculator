@@ -38,7 +38,7 @@ window.setPartNightAndHijri = function () {
         let hijriString = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'numeric',day: 'numeric',calendar:'islamic'}).format(hijriDate)
         let hijriArr = hijriString.split(' ')[0].split('/')
         document.querySelector('#hijridate').innerText =  hijriArr[1]+ ' ' + IslamicMonths[hijriArr[0]-1]   + ' ' + hijriArr[2] + ' AH'
-        let todayDay = new Date().getDay()
+        let todayDay = (new Date()).getDay()
         let calendarDate = new Date()
         calendarDate.setDate(hijriArr[1])
         // zero indexed month
