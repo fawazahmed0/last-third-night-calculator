@@ -78,6 +78,9 @@ window.autoDetectWithCoords = function () {
 if ('serviceWorker' in navigator) { navigator.serviceWorker.register(new URL('service-worker.js', import.meta.url)) }
 
 function ready() {
+    let params = new URLSearchParams(document.location.search);
+    if(params.get("date"))
+    document.querySelector('#datecontainerspan').removeAttribute("hidden") 
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
