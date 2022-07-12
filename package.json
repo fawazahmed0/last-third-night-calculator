@@ -5,7 +5,7 @@
   "scripts": {
     "start": "parcel code/*.html --https",
     "prebuild": "npx rimraf docs",
-    "build": "parcel build code/*.html --dist-dir docs --public-url ./ && npx workbox generateSW"
+    "build": "parcel build code/*.html --no-cache --dist-dir docs --public-url ./ && npx workbox generateSW"
   },
   "repository": {
     "type": "git",
