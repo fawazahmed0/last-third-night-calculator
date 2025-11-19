@@ -2,6 +2,7 @@
   "name": "last-third-night-calculator",
   "version": "1.0.0",
   "description": "Calculate last third night for praying",
+  "type": "module",
   "scripts": {
     "dev": "vite src",
     "build": "vite build src --outDir ../docs && npx workbox generateSW"
