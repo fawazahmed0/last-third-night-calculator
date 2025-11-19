@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Calculate last third night for praying",
   "scripts": {
-    "dev": "npx http-server docs -c-1 -S -C cert.pem",
-    "build": "npx workbox generateSW"
+    "dev": "vite src",
+    "build": "vite build src --outDir ../docs && npx workbox generateSW"
   },
   "repository": {
     "type": "git",
