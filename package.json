@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/fawazahmed0/last-third-night-calculator#readme",
   "dependencies": {
-    "js-cookie": "^3.0.1",
     "solar-calc": "github:fawazahmed0/solar-calc#release"
   }
 }

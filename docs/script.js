@@ -49,7 +49,7 @@ window.setPartNightAndHijri = function () {
                 break
         }
         document.querySelector('#dateInput').value = calendarDate.toLocaleDateString('en-CA')
-        Cookies.set('dateoffset', dateoffset, { expires: 36500 })
+        localStorage.setItem('dateoffset', dateoffset)
         // new Intl.DateTimeFormat(['islamic','islamic-tbla','islamic-umalqura','islamic-rgsa','islamic-civil'].map(e=>'en-u-ca-'+e),{dateStyle:'long' }).format(hijriDate)
         }
 }
@@ -86,13 +86,12 @@ function ready() {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
 
-    document.querySelector('#dateoffset').value = Cookies.get('dateoffset') || '0'
+    document.querySelector('#dateoffset').value = localStorage.getItem('dateoffset') || '0'
 
 
 }
 
 
 import * as SolarCalc from 'solar-calc'
-import Cookies from 'js-cookie'
 var IslamicMonths = ["Muharram","Safar","Rabiʻ I","Rabiʻ II","Jumada I","Jumada II","Rajab","Shaʻban","Ramadan","Shawwal","Dhuʻl-Qiʻdah","Dhuʻl-Hijjah"]
 document.addEventListener("DOMContentLoaded", ready);
