@@ -75,7 +75,7 @@ globalThis.autoDetectWithCoords = function () {
 }
 
 // Register Service worker for Add to Home Screen option to work
-if ('serviceWorker' in navigator) { navigator.serviceWorker.register(new URL('service-worker.js', import.meta.url)) }
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register(new URL('/service-worker.js', import.meta.url)) }
 
 function ready() {
     let params = new URLSearchParams(document.location.search);

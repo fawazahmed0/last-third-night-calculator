@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Calculate last third night for praying",
   "scripts": {
-    "dev": "vite src",
-    "build": "vite build src --emptyOutDir  --outDir ../docs && npx workbox generateSW",
-    "preview": "vite preview --outDir docs"
+    "dev": "vite",
+    "build": "vite build && npx workbox generateSW",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
