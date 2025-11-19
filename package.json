@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fawazahmed0/last-third-night-calculator#readme",
   "dependencies": {
-    "solar-calc": "github:fawazahmed0/solar-calc#release"
+    "solar-calc": "github:fawazahmed0/solar-calc#release",
+    "workbox-cli": "^7.4.0"
   }
 }
