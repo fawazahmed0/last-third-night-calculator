@@ -3,33 +3,21 @@
   "version": "1.0.0",
   "description": "Calculate last third night for praying",
   "scripts": {
-    "start": "parcel code/*.html --https",
-    "prebuild": "npx rimraf docs",
-    "build": "parcel build code/*.html --no-cache --dist-dir docs --public-url ./ && npx workbox generateSW"
+    "dev": "npx http-server docs -c-1 -S -C cert.pem",
+    "build": "npx workbox generateSW"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fawazahmed0/last-third-night-calculator.git"
   },
-  "browserslist": [
-    "defaults"
-  ],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fawazahmed0/last-third-night-calculator/issues"
   },
   "homepage": "https://github.com/fawazahmed0/last-third-night-calculator#readme",
-  "devDependencies": {
-    "@parcel/packager-raw-url": "^2.2.1",
-    "@parcel/transformer-webmanifest": "^2.2.1",
-    "parcel": "^2.2.1",
-    "parcel-transformer-ogimage": "^1.0.1",
-    "workbox-cli": "^6.5.3"
-  },
   "dependencies": {
     "js-cookie": "^3.0.1",
-    "parcel-reporter-static-files-copy": "^1.3.4",
     "solar-calc": "github:fawazahmed0/solar-calc#release"
   }
 }
