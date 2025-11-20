@@ -1,0 +1,33 @@
+[
+        {
+        "tag": "input",
+        "label": "Name",
+        "attributes": {
+            "required": "required",
+            "id": "name",
+            "type": "text",
+            "autocomplete": "on"
+        }
+    },
+    
+    
+    {
+        "tag": "input",
+        "label": "Email",
+        "attributes": {
+            "required": "required",
+            "id": "email",
+            "type": "email",
+            "autocomplete": "on"
+        }
+    },
+    {
+        "tag": "textarea",
+        "label": "Feedback",
+        "attributes": {
+            "rows": 3,
+            "required": "required",
+            "id": "feedback"
+        }
+    }
+]
