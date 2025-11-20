@@ -93,6 +93,5 @@ function ready() {
 
 
 import SolarCalc from 'https://esm.run/@fawazahmed0/solar-calc'
-console.log(SolarCalc)
 var IslamicMonths = ["Muharram","Safar","Rabiʻ I","Rabiʻ II","Jumada I","Jumada II","Rajab","Shaʻban","Ramadan","Shawwal","Dhuʻl-Qiʻdah","Dhuʻl-Hijjah"]
 document.addEventListener("DOMContentLoaded", ready);
