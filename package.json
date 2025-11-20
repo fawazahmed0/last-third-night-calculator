@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Calculate last third night for praying",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && npx workbox generateSW",
-    "preview": "vite preview"
+    "dev": "npx http-server docs -c-1 -S -C cert.pem",
+    "build": "npx workbox generateSW"
   },
   "repository": {
     "type": "git",
@@ -18,8 +17,6 @@
   },
   "homepage": "https://github.com/fawazahmed0/last-third-night-calculator#readme",
   "dependencies": {
-    "solar-calc": "github:fawazahmed0/solar-calc#release",
-    "vite": "^7.2.2",
     "workbox-cli": "^7.4.0"
   }
 }
