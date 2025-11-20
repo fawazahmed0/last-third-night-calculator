@@ -1,3 +1,5 @@
+const martialURL = "https://NoorMatch.pages.dev"
+
 function getRadioHTML(legend = "", name, type, radios, required = true) {
     let radiosTextArr = []
     for (let radio of radios) {
@@ -93,8 +95,6 @@ async function submitForm(obj) {
     }).catch(console.error)
 
     removeSpinningWheel()
-
-    let martialURL = "https://NoorMatch.pages.dev"
 
     if (['update', 'delete'].includes(data['command'])) {
         document.querySelector("#mycontainer").insertAdjacentHTML('afterbegin', `<h3 class="p-3">Thank you! Your profile will be ${data['command']}d within 24 hours.</h3>`);
