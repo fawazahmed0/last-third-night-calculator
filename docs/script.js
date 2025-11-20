@@ -25,7 +25,7 @@ function getPartNightAndHijri(fajrhour, fajrmin, magribhour, magribmin) {
 
 }
 
-window.setPartNightAndHijri = function () {
+globalThis.setPartNightAndHijri = function () {
     if (document.querySelector('#fajrtime').value != '' && document.querySelector('#magribtime').value != '') {
         let [halfNight, twothirdNight, hijriDate] = getPartNightAndHijri(...document.querySelector('#fajrtime').value.split(':'), ...document.querySelector('#magribtime').value.split(':'))
 
@@ -54,7 +54,7 @@ window.setPartNightAndHijri = function () {
         }
 }
 
-window.autoDetectWithCoords = function () {
+globalThis.autoDetectWithCoords = function () {
     if ('geolocation' in navigator)
         navigator.geolocation.getCurrentPosition(pos => {
             var solar = new SolarCalc(new Date(), pos.coords.latitude, pos.coords.longitude);
