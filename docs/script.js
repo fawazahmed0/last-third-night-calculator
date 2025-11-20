@@ -55,7 +55,7 @@ globalThis.setPartNightAndHijri = function () {
 }
 
 globalThis.autoDetectWithCoords = function () {
-    if ('geolocation' in navigator){
+    if ('geolocation' in navigator) {
         let autoDetectBtn = document.querySelector('#autodetectbtn')
         autoDetectBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Auto Detect`
         autoDetectBtn.disabled = true;
@@ -69,13 +69,11 @@ globalThis.autoDetectWithCoords = function () {
 
             setPartNightAndHijri()
 
-         autoDetectBtn.innerHTML = `Auto Detect`
-         autoDetectBtn.disabled = false;
+            autoDetectBtn.innerHTML = `Auto Detect`
+            autoDetectBtn.disabled = false;
 
-        }, err => {autoDetectBtn.innerHTML = `Auto Detect`;autoDetectBtn.disabled = false;})
+        }, err => { autoDetectBtn.innerHTML = `Auto Detect`; autoDetectBtn.disabled = false; })
     }
-
-
 
 }
 
