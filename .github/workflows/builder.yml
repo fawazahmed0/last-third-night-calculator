@@ -61,7 +61,7 @@ jobs:
       run: |
         git config --global user.email github-actions@github.com
         git config --global user.name github-actions
-        git remote set-url origin "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git"
+        git remote set-url origin "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
         git pull
         git add -A
         git commit -m 'Generated Files'
