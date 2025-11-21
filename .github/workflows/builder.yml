@@ -37,7 +37,14 @@ jobs:
         npm run build
 
 
-
+    - name: Deploy
+      uses: cloudflare/wrangler-action@v3
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        workingDirectory: './repo'
+        command: |
+          pages deploy --project-name=${{ secrets.PROJECT_NAME }} dist
 
     # commiting and pushing changes
     - name: commit and push repo
