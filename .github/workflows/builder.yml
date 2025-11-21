@@ -11,14 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v6
 
     - uses: actions/checkout@v6
       with:
         repository: ${{ secrets.REPO_NAME }}
         ssh-key: ${{ secrets.SSH_REPO_DEPLOY_PRIVATE_KEY }}
         path: repo
-
-    - uses: actions/checkout@v6
 
     - uses: actions/setup-node@v6
       with:
