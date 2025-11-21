@@ -23,11 +23,38 @@ jobs:
       with:
         node-version: 'latest'
 
-    - name: Build
+    - name: Install & Build repo
+      working-directory: ./repo
+      run: |
+        npm i
+        npm run build > logfile.txt 2>&1
+
+    - name: Install & Build
       run: |
         npm i
         npm run build
 
+
+    - name: Deploy
+      uses: cloudflare/wrangler-action@v3
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        workingDirectory: './repo'
+        command: |
+          pages deploy --project-name=${{ secrets.PROJECT_NAME }} dist
+
+    # commiting and pushing changes
+    - name: commit and push repo
+      working-directory: ./repo
+      shell: bash
+      run: |
+        git config --global user.email github-actions@github.com
+        git config --global user.name github-actions
+        git pull
+        git add -A
+        git commit -m 'Generated Files'
+        git push       
     # commiting and pushing changes
     - name: commit and push
       shell: bash
