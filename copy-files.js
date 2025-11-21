@@ -8,7 +8,7 @@ async function main(){
     await fs.mkdir(directoryToCopyFrom, {recursive: true})
     await fs.mkdir(directoryToCopyTo, {recursive: true})
 
-    const filesToCopy = ['common.js', 'feedback.json', 'form.html', 'form.js']
+    const filesToCopy = ['common.js', 'form.html', 'form.js']
     for (const file of (await fs.readdir(directoryToCopyFrom)).filter(f => filesToCopy.includes(f))) 
         await fs.copyFile(path.join(directoryToCopyFrom, file), path.join(directoryToCopyTo, file))
     
