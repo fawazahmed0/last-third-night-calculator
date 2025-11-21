@@ -11,7 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v6
+
+    - name: clone repo
+      run: |
+        git clone "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" .
+
+    
 
     - uses: actions/checkout@v6
       with:
@@ -54,8 +59,6 @@ jobs:
       run: |
         git config --global user.email github-actions@github.com
         git config --global user.name github-actions
-        REPO="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
-        git remote set-url origin $REPO
         git pull
         git add -A
         git commit -m 'Generated Files'
