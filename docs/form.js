@@ -100,7 +100,7 @@ async function submitForm(obj) {
         document.querySelector("#mycontainer").insertAdjacentHTML('afterbegin', `<h3 class="p-3">Thank you! Your profile will be ${data['command']}d within 24 hours.</h3>`);
     } else {
         document.querySelector("#mycontainer").insertAdjacentHTML('afterbegin', `<h3 class="p-3">Thank you! Your profile will be created within 24 hours.</h3>
-                <h3 class="p-3">You can view profiles at <a href="${martialURL}" target="_blank">${martialURL.replace("https://", "")}</a>. Don't forget to save this link.</h3>`);
+                <h3 class="p-3">View profiles here: <a href="${martialURL}" target="_blank">${martialURL.replace("https://", "")}</a> — Please save this link for future use.</h3>`);
     }
 }
 
