@@ -110,7 +110,7 @@ async function ready() {
     const form = document.getElementById("myform");
     let formFields, htmlText;
     if ((localStorage.getItem('thirdNightInvitationEligible') && localStorage.getItem('thirdNightInvitationResponse') !== 'never') || ['update', 'delete'].includes(localStorage['command'])) {
-        formFields = await fetch(`${martialURL}/questions.json`).then(res => res.json())
+        formFields = await fetch(`questions.json`).then(res => res.json())
         htmlText = `<h3 class="m-3">Personal Profile</h3>`;
         document.title = "Personal Profile Form";
     }
