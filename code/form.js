@@ -110,6 +110,10 @@ async function ready() {
     const form = document.getElementById("myform");
     let formFields, htmlText;
     if ((localStorage.getItem('thirdNightInvitationEligible') && localStorage.getItem('thirdNightInvitationResponse') !== 'never') || ['update', 'delete'].includes(localStorage['command'])) {
+        if (!("fromBase64" in Uint8Array)) {
+            showModal("Outdated Browser", "Your browser is outdated and does not support the required security features. Please update to a modern browser such as the latest version of Chrome, Firefox, Edge, or Safari to use this service.");
+            return;
+        }
         formFields = await fetch(`questions.json`).then(res => res.json())
         htmlText = `<h3 class="m-3">Personal Profile</h3>`;
         document.title = "Personal Profile Form";

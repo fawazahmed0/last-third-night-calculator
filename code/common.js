@@ -1,6 +1,8 @@
 const commonKey = 'sRCZJbf8ltHkmkqh/Gjqhk7tfP6L0Pq9S0dX+chXNzA='
 
 function normalizeEmail(email) {
+    if(!email.includes("@") || email.length <3)
+        throw "Invalid email address"
     let emailArr = email.trim().split("@")
     return `${emailArr.slice(0, -1).join("@")}@${emailArr.at(-1).toLowerCase()}`
 }
@@ -114,6 +116,13 @@ function showSpinningWheel(selector, position) {
 function removeSpinningWheel() {
   if (document.body.contains(document.querySelector('#spinningwheel')) )
   document.querySelector('#spinningwheel').remove()
+}
+
+function showModal(title, body) {
+  let myModal = new bootstrap.Modal(document.getElementById('modaldiv'))
+  document.querySelector('#modaldiv .modal-title').innerHTML = title
+  document.querySelector('#modaldiv .modal-body').innerHTML = body
+  myModal.show()
 }
 
 // Call this function after loading the module in nodejs or after domcontentloaded in ready func in browser
