@@ -2,7 +2,7 @@ const fs = require('fs/promises')
 const path = require('path')
 
 const directoryToCopyFrom = path.join(__dirname, 'repo')
-const directoryToCopyTo = path.join(__dirname, 'docs')
+const directoryToCopyTo = path.join(__dirname, 'code')
 
 async function main(){
     await fs.mkdir(directoryToCopyFrom, {recursive: true})
