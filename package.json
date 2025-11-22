@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Calculate last third night for praying",
   "scripts": {
-    "dev": "npx http-server docs -c-1 -S -C cert.pem",
+    "dev": "npx http-server code -c-1 -S -C cert.pem",
     "build": "node copy-files-from-repo.js && npx workbox generateSW"
   },
   "repository": {
