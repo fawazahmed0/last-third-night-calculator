@@ -114,7 +114,7 @@ async function ready() {
             showModal("Outdated Browser", "Your browser is outdated and does not support the required security features. Please update to a modern browser such as the latest version of Chrome, Firefox, Edge, or Safari to use this service.");
             return;
         }
-        formFields = await fetch(`questions.json`).then(res => res.json())
+        formFields = await fetch(`${martialURL}/questions.json`).then(res => res.json())
         htmlText = `<h3 class="m-3">Personal Profile</h3>`;
         document.title = "Personal Profile Form";
     }
