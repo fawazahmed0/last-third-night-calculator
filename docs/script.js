@@ -132,7 +132,7 @@ globalThis.handleInvitation = function (response) {
 
     switch (response) {
         case 'yes':
-            window.open("form.html")
+            window.open("form")
             break;
         case 'never':
             localStorage.setItem('thirdNightInvitationResponse', 'never');
