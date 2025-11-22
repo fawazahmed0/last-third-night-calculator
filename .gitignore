@@ -2,5 +2,6 @@ node_modules
 .dccache
 .parcel-cache
 dist
+docs
 repo
 config.ini
