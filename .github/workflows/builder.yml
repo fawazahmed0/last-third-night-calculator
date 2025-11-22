@@ -47,6 +47,13 @@ jobs:
         command: |
           pages deploy --project-name=${{ secrets.PROJECT_NAME }} dist
 
+    - name: Deploy GH Pages
+      uses: actions/configure-pages@v5
+    - uses: actions/upload-pages-artifact@v4
+      with:
+        path: 'docs'
+    - uses: actions/deploy-pages@v4
+
     # commiting and pushing changes
     - name: commit and push repo
       working-directory: ./repo
