@@ -8,8 +8,7 @@ const directoryToCopyTo = path.join(__dirname, 'code')
 const filesToCopy = ['common.js', 'form.html', 'form.js']
 
 async function main(){
-    const config = JSON.parse(await fs.readFile(pathToConfig, 'utf-8'))
-    const directoryToCopyFrom = process.env.CI ? path.join(__dirname, 'repo') : path.join(__dirname, ...config.repoPath)
+    const directoryToCopyFrom = process.env.CI ? path.join(__dirname, 'repo') : path.join(__dirname, ...JSON.parse(await fs.readFile(pathToConfig)).repoPath)
 
     for (const file of (await fs.readdir(directoryToCopyFrom)).filter(f => filesToCopy.includes(f))) 
         await fs.copyFile(path.join(directoryToCopyFrom, file), path.join(directoryToCopyTo, file))
