@@ -1,7 +1,7 @@
 const fs = require('fs/promises')
 const path = require('path')
 
-const directoryToCopyFrom = path.join(__dirname, 'repo', 'dist')
+const directoryToCopyFrom = path.join(__dirname, 'repo')
 const directoryToCopyTo = path.join(__dirname, 'docs')
 
 async function main(){
