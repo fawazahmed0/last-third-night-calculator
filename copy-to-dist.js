@@ -1,7 +1,7 @@
 const fs = require('fs/promises')
 const path = require('path')
 
-const sourceDir = path.join(pathToRepoDir, 'code')
+const sourceDir = path.join(__dirname, 'code')
 const distDir = path.join(__dirname, 'docs')
 const pathToConfig = path.join(__dirname, 'config.ini')
 
