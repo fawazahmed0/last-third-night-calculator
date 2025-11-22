@@ -43,6 +43,7 @@ jobs:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         workingDirectory: './repo'
+        quiet: true
         command: |
           pages deploy --project-name=${{ secrets.PROJECT_NAME }} dist
 
