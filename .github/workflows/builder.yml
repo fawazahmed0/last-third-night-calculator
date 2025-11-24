@@ -74,5 +74,5 @@ jobs:
         git remote set-url origin "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
         git pull
         git add -A
-        git commit -m 'Generated Files'
+        git commit -m 'Generated Files' || true
         git push
