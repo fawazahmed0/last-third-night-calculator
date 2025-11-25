@@ -41,9 +41,6 @@ async function submitForm(obj) {
     const data = Object.fromEntries(formData.entries());
     form.remove()
 
-    showSpinningWheel("#mycontainer", 'beforeend');
-
-
     // Don't show invitation again, as form is already submitted
     localStorage.setItem('thirdNightInvitationResponse', 'never')
 
@@ -51,6 +48,8 @@ async function submitForm(obj) {
         document.querySelector("#mycontainer").insertAdjacentHTML('afterbegin', `<h3 class="p-3">Thank you for your submission! It's been a great journey, but our service is officially closed.</h3>`);
         return
     }
+
+    showSpinningWheel("#mycontainer", 'beforeend');
 
     data['email'] = normalizeEmail(data['email'])
 
