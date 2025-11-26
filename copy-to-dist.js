@@ -12,9 +12,8 @@ async function main() {
   await fs.rm(distDir, { recursive: true, force: true })
   await fs.cp(sourceDir, distDir, { recursive: true })
 
-  // TODO: Minify files in distDir by uncommenting below
-  // for(const filePath of await listDirRecursive(distDir, true))
-   // await minifyFile(filePath, filePath)
+  for(const filePath of await listDirRecursive(distDir, true))
+    await minifyFile(filePath, filePath)
 
  
 }
