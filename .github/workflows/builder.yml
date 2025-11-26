@@ -1,6 +1,10 @@
 name: build
 
 on:
+
+  schedule:
+    - cron: 49 3 * * 1-5
+
   workflow_dispatch:
 
 permissions: write-all
