@@ -1,5 +1,5 @@
 {
-  "name": "last-third-night-calculator",
+  "name": "temp-third",
   "version": "1.0.0",
   "description": "Calculate last third night for praying",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fawazahmed0/last-third-night-calculator.git"
+    "url": "git+https://github.com/fawazahmed0/temp-third.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fawazahmed0/last-third-night-calculator/issues"
+    "url": "https://github.com/fawazahmed0/temp-third/issues"
   },
-  "homepage": "https://github.com/fawazahmed0/last-third-night-calculator#readme",
+  "homepage": "https://github.com/fawazahmed0/temp-third#readme",
   "dependencies": {
     "workbox-cli": "^7.4.0"
   }
