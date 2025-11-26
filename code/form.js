@@ -71,11 +71,7 @@ async function submitForm(obj) {
     data['dataKey'] = dataBase64Key
     data['wrapKey'] = wrapBase64Key
 
-    let pageURL = new URL(window.location.href);
-    pageURL['hash'] = '';
-    pageURL['search'] = '';
-
-    data['href'] = pageURL.href;
+    data['href'] = window.location.href;
 
     const randomIV = crypto.getRandomValues(new Uint8Array(12));
     let encryptedData = await encryptData(globalThis.commonCryptoKey, randomIV, JSON.stringify(data));
