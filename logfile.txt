@@ -1,0 +1,18 @@
+
+> last-third-night-calculator@1.0.0 build
+> node copy-files-from-repo.js && node copy-to-dist.js && npx workbox generateSW
+
+node:internal/fs/promises:958
+  const result = await PromisePrototypeThen(
+                 ^
+
+Error: ENOENT: no such file or directory, scandir '/home/runner/work/last-third-night-calculator/last-third-night-calculator/repo/repo'
+    at async Object.readdir (node:internal/fs/promises:958:18)
+    at async main (/home/runner/work/last-third-night-calculator/last-third-night-calculator/repo/copy-files-from-repo.js:13:25) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: '/home/runner/work/last-third-night-calculator/last-third-night-calculator/repo/repo'
+}
+
+Node.js v25.2.1
