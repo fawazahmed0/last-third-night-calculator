@@ -113,7 +113,7 @@ function showInvitationIfEligible() {
     // Don't record if this is ramadan month or 10 days before or after ramadan. Everyone is religious this time
     if (!isRamadan)
         visits.push(new Date().toISOString().slice(0, 10)); // Store only the date part
-    localStorage.setItem('thirdNightVisits', JSON.stringify(visits));
+    localStorage.setItem('thirdNightVisits', JSON.stringify([...new Set(visits)]));
 }
 
 function showInvitation() {
