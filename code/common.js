@@ -125,6 +125,13 @@ function showModal(title, body) {
   myModal.show()
 }
 
+function showToast(title, body) {
+  let myToast = new bootstrap.Toast(document.getElementById('mytoastdiv'))
+  document.querySelector('#mytoastdiv strong').innerHTML = title
+  document.querySelector('#mytoastdiv .toast-body').innerHTML = body
+  myToast.show()
+}
+
 // Call this function after loading the module in nodejs or after domcontentloaded in ready func in browser
 async function initializeGlobalVariables() {
     globalThis.commonCryptoKey = await crypto.subtle.importKey("raw", Uint8Array.fromBase64(commonKey), "AES-GCM", true, ["encrypt", "decrypt"]);
