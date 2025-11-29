@@ -92,7 +92,7 @@ function showInvitationIfEligible() {
     // Don't show if dialog shown today or user has opted to never show again
     if (recentVisits.length >= 3 && localStorage.getItem('thirdNightSkipToday') !== new Date().toISOString().slice(0, 10) && localStorage.getItem('thirdNightInvitationResponse') !== 'never') {
         localStorage.setItem('thirdNightInvitationEligible', true);
-        showInvitation()
+        setTimeout(showInvitation, 2000); // Show after 2 seconds
     }
 
     let hijriString = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'numeric', day: 'numeric', calendar: 'islamic' }).format(new Date())
