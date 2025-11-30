@@ -117,15 +117,11 @@ function showInvitationIfEligible() {
 }
 
 function showInvitation() {
-    const invitationCollapse = new bootstrap.Collapse(document.getElementById('invitationCollapse'), {
-        show: true
-    });
+    new bootstrap.Collapse(document.getElementById('invitationCollapse')).show();
 }
 
 globalThis.handleInvitation = function (response) {
-    const invitationCollapse = new bootstrap.Collapse(document.getElementById('invitationCollapse'), {
-        hide: true
-    });
+    new bootstrap.Collapse(document.getElementById('invitationCollapse')).hide();
 
     // Don't show again today, if any button is pressed
     localStorage.setItem('thirdNightSkipToday', new Date().toISOString().slice(0, 10));
