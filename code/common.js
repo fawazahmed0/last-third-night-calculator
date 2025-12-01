@@ -1,7 +1,7 @@
 const commonKey = 'sRCZJbf8ltHkmkqh/Gjqhk7tfP6L0Pq9S0dX+chXNzA='
 
 function normalizeEmail(email) {
-    if(!email.includes("@") || email.length <3)
+    if (!email.includes("@") || email.length < 3)
         throw "Invalid email address"
     let emailArr = email.trim().split("@")
     return `${emailArr.slice(0, -1).join("@")}@${emailArr.at(-1).toLowerCase()}`
@@ -102,34 +102,36 @@ async function getAESKeyFromX25519(ourPrivateKey, theirPublicKey) {
 }
 
 function showSpinningWheel(selector, position) {
-  if (!document.body.contains(document.querySelector('#spinningwheel')) ) {
-    document.querySelector(selector).insertAdjacentHTML(position,`<div  id="spinningwheel">
+    if (!document.body.contains(document.querySelector('#spinningwheel'))) {
+        document.querySelector(selector).insertAdjacentHTML(position, `<div  id="spinningwheel">
     <div class="text-center">
       <div class="spinner-border m-5" role="status">
       </div>
       </div>
       </div>
       `)
-  }
+    }
 }
 
 function removeSpinningWheel() {
-  if (document.body.contains(document.querySelector('#spinningwheel')) )
-  document.querySelector('#spinningwheel').remove()
+    if (document.body.contains(document.querySelector('#spinningwheel')))
+        document.querySelector('#spinningwheel').remove()
 }
 
-function showModal(title, body) {
-  let myModal = new bootstrap.Modal(document.getElementById('modaldiv'))
-  document.querySelector('#modaldiv .modal-title').innerHTML = title
-  document.querySelector('#modaldiv .modal-body').innerHTML = body
-  myModal.show()
+function showModal(title, body, footer) {
+    let myModal = new bootstrap.Modal(document.getElementById('modaldiv'))
+    document.querySelector('#modaldiv .modal-title').innerHTML = title
+    document.querySelector('#modaldiv .modal-body').innerHTML = body
+    if (footer)
+        document.querySelector('#modaldiv .modal-footer').innerHTML = footer
+    myModal.show()
 }
 
 function showToast(title, body) {
-  let myToast = new bootstrap.Toast(document.getElementById('mytoastdiv'))
-  document.querySelector('#mytoastdiv strong').innerHTML = title
-  document.querySelector('#mytoastdiv .toast-body').innerHTML = body
-  myToast.show()
+    let myToast = new bootstrap.Toast(document.getElementById('mytoastdiv'))
+    document.querySelector('#mytoastdiv strong').innerHTML = title
+    document.querySelector('#mytoastdiv .toast-body').innerHTML = body
+    myToast.show()
 }
 
 // Call this function after loading the module in nodejs or after domcontentloaded in ready func in browser
@@ -223,26 +225,26 @@ function isString(value) {
 }
 
 async function decompressBlobToJSON(blob) {
-  const ds = new DecompressionStream("gzip");
-  const decompressedStream = blob.stream().pipeThrough(ds);
-  return await new Response(decompressedStream).json();
+    const ds = new DecompressionStream("gzip");
+    const decompressedStream = blob.stream().pipeThrough(ds);
+    return await new Response(decompressedStream).json();
 }
 
 // Recursively replace nested array
 function recursiveReplaceArray(arr, jsonMap) {
     for (let i = 0; i < arr.length; i++) {
         if (Array.isArray(arr[i]))
-           arr[i] = recursiveReplaceArray(arr[i], jsonMap)
+            arr[i] = recursiveReplaceArray(arr[i], jsonMap)
         else
             arr[i] = arr[i] in jsonMap ? jsonMap[arr[i]] : arr[i]
     }
-return arr
+    return arr
 }
 
 function getRandomInt(min, max) {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
 }
 
 
