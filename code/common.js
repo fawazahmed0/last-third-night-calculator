@@ -136,8 +136,8 @@ function showToast(title, body) {
 
 // Call this function after loading the module in nodejs or after domcontentloaded in ready func in browser
 async function initializeGlobalVariables() {
-    globalThis.Uint8Array.fromBase64 ??= (await import('https://cdn.jsdelivr.net/npm/es-arraybuffer-base64@1.1.2/Uint8Array.fromBase64/+esm')).default
-    globalThis.Uint8Array.prototype.toBase64 ??= (await import('https://cdn.jsdelivr.net/npm/es-arraybuffer-base64@1.1.2/Uint8Array.prototype.toBase64/+esm')).default
+   if(!("fromBase64" in globalThis.Uint8Array))
+        await import('https://cdn.jsdelivr.net/gh/fawazahmed0/proposal-arraybuffer-base64@main/playground/polyfill-install.mjs')
     globalThis.commonCryptoKey = await crypto.subtle.importKey("raw", Uint8Array.fromBase64(commonKey), "AES-GCM", true, ["encrypt", "decrypt"]);
 }
 
