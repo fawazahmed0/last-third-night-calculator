@@ -150,6 +150,8 @@ function ready() {
 
     document.querySelector('#dateoffset').value = localStorage.getItem('dateoffset') || '0'
 
+    if (localStorage.getItem('thirdNightInvitationResponse') == 'never')
+        localStorage.removeItem("thirdNightInvitationResponse");
 
 }
 
