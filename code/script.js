@@ -90,7 +90,7 @@ function showInvitationIfEligible() {
 
     // If user has visited 3 or more times in last 20 days
     // Don't show if dialog shown today or user has opted to never show again
-    if (recentVisits.length >= 3 && localStorage.getItem('thirdNightSkipToday') !== new Date().toISOString().slice(0, 10) && localStorage.getItem('thirdNightInvitationResponse') !== 'never') {
+    if (recentVisits.length >= 3 && localStorage.getItem('thirdNightSkipToday') !== new Date().toISOString().slice(0, 10) && localStorage.getItem('thirdNightInvitationResponse') !== 'neveragain') {
         localStorage.setItem('thirdNightInvitationEligible', true);
         setTimeout(showInvitation, 500); // Show after 0.5 seconds
     }
@@ -130,8 +130,8 @@ globalThis.handleInvitation = function (response) {
         case 'yes':
             window.open("form")
             break;
-        case 'never':
-            localStorage.setItem('thirdNightInvitationResponse', 'never');
+        case 'neveragain':
+            localStorage.setItem('thirdNightInvitationResponse', 'neveragain');
             break;
     }
 }
