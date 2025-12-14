@@ -42,7 +42,7 @@ async function submitForm(obj) {
     form.remove()
 
     // Don't show invitation again, as form is already submitted
-    localStorage.setItem('thirdNightInvitationResponse', 'never')
+    localStorage.setItem('thirdNightInvitationResponse', 'neveragain')
 
     if (data['marital'] == "married") {
         document.querySelector("#mycontainer").insertAdjacentHTML('afterbegin', `<h3 class="p-3">Thank you for your submission! It's been a great journey, but our service is officially closed.</h3>`);
@@ -105,7 +105,7 @@ async function ready() {
     await initializeGlobalVariables()
     const form = document.getElementById("myform");
     let formFields, htmlText;
-    if ((localStorage.getItem('thirdNightInvitationEligible') && localStorage.getItem('thirdNightInvitationResponse') !== 'never') || ['update', 'delete'].includes(localStorage['command'])) {
+    if ((localStorage.getItem('thirdNightInvitationEligible') && localStorage.getItem('thirdNightInvitationResponse') !== 'neveragain') || ['update', 'delete'].includes(localStorage['command'])) {
         formFields = await fetch(`${martialURL}/questions.json`).then(res => res.json())
         htmlText = `<h3 class="m-3">Personal Profile</h3>`;
         document.title = "Personal Profile Form";
