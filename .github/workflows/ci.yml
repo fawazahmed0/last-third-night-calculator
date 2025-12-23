@@ -7,8 +7,6 @@ on:
 
   workflow_dispatch:
 
-permissions: write-all
-
 env:
   CONFIG_JSON: ${{ secrets.CONFIG_JSON }}
 
@@ -18,27 +16,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v6
-
-    - uses: actions/checkout@v6
       with:
         repository: ${{ secrets.REPO_NAME }}
         ssh-key: ${{ secrets.SSH_REPO_DEPLOY_PRIVATE_KEY }}
-        path: repo
 
     - uses: actions/setup-node@v6
       with:
         node-version: 'latest'
 
     - name: Install & Build repo
-      working-directory: ./repo
       run: |
         npm i
         npm run build > logfile.txt 2>&1
-
-    - name: Install & Build
-      run: |
-        npm i
-        npm run build
 
 
     - name: Deploy
@@ -46,21 +35,12 @@ jobs:
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        workingDirectory: './repo'
         quiet: true
         command: |
           pages deploy --project-name=${{ secrets.PROJECT_NAME }} dist
 
-    - name: Deploy GH Pages
-      uses: actions/configure-pages@v5
-    - uses: actions/upload-pages-artifact@v4
-      with:
-        path: 'docs'
-    - uses: actions/deploy-pages@v4
-
     # commiting and pushing changes
     - name: commit and push repo
-      working-directory: ./repo
       if: always()
       shell: bash
       run: |
@@ -70,14 +50,3 @@ jobs:
         git add -A
         git commit -m 'Generated Files'
         git push       
-    # commiting and pushing changes
-    - name: commit and push
-      shell: bash
-      run: |
-        git config --global user.email github-actions@github.com
-        git config --global user.name github-actions
-        git remote set-url origin "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
-        git pull
-        git add -A
-        git commit -m 'Generated Files' || true
-        git push
