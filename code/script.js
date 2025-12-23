@@ -27,7 +27,6 @@ function getPartNightAndHijri(fajrhour, fajrmin, magribhour, magribmin) {
 
 globalThis.setPartNightAndHijri = function () {
     if (document.querySelector('#fajrtime').value != '' && document.querySelector('#magribtime').value != '') {
-        showInvitationIfEligible()
         let [halfNight, twothirdNight, hijriDate] = getPartNightAndHijri(...document.querySelector('#fajrtime').value.split(':'), ...document.querySelector('#magribtime').value.split(':'))
 
         document.querySelector('#lastthird').innerText = twothirdNight.toLocaleString('default', { hour: 'numeric', minute: 'numeric' })
@@ -78,63 +77,6 @@ globalThis.autoDetectWithCoords = function () {
 
 }
 
-// Check if we should show the invitation (after 3 days of usage in last 20 days)
-function showInvitationIfEligible() {
-    const visits = JSON.parse(localStorage.getItem('thirdNightVisits') || '[]');
-
-    const last20Days = new Date();
-    last20Days.setDate(last20Days.getDate() - 20);
-
-    // Filter visits in last 20 days
-    const recentVisits = [...new Set(visits.filter(visit => new Date(visit) > last20Days))]
-
-    // If user has visited 3 or more times in last 20 days
-    // Don't show if dialog shown today or user has opted to never show again
-    if (recentVisits.length >= 3 && localStorage.getItem('thirdNightSkipToday') !== new Date().toISOString().slice(0, 10) && localStorage.getItem('thirdNightInvitationResponse') !== 'neveragain') {
-        localStorage.setItem('thirdNightInvitationEligible', true);
-        setTimeout(showInvitation, 500); // Show after 0.5 seconds
-    }
-
-    let hijriString = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'numeric', day: 'numeric', calendar: 'islamic' }).format(new Date())
-    let hijriDate = new Date()
-    let [hijriMonth, hijriDay] = hijriString.split('/')
-    hijriDate.setMonth(hijriMonth - 1)
-    hijriDate.setDate(hijriDay)
-    let fromHijri = new Date()
-    fromHijri.setMonth(8 - 1)
-    fromHijri.setDate(20)
-    let toHijri = new Date()
-    toHijri.setMonth(10 - 1)
-    toHijri.setDate(10)
-
-    const isRamadan = fromHijri < hijriDate && hijriDate < toHijri
-
-    // Record this visit
-    // Don't record if this is ramadan month or 10 days before or after ramadan. Everyone is religious this time
-    if (!isRamadan)
-        visits.push(new Date().toISOString().slice(0, 10)); // Store only the date part
-    localStorage.setItem('thirdNightVisits', JSON.stringify([...new Set(visits)]));
-}
-
-function showInvitation() {
-    new bootstrap.Collapse(document.getElementById('invitationCollapse')).show();
-}
-
-globalThis.handleInvitation = function (response) {
-    new bootstrap.Collapse(document.getElementById('invitationCollapse')).hide();
-
-    // Don't show again today, if any button is pressed
-    localStorage.setItem('thirdNightSkipToday', new Date().toISOString().slice(0, 10));
-
-    switch (response) {
-        case 'yes':
-            window.open("form")
-            break;
-        case 'neveragain':
-            localStorage.setItem('thirdNightInvitationResponse', 'neveragain');
-            break;
-    }
-}
 
 // Register Service worker for Add to Home Screen option to work
 if ('serviceWorker' in navigator) { navigator.serviceWorker.register(new URL('service-worker.js', import.meta.url)) }
@@ -149,10 +91,6 @@ function ready() {
     })
 
     document.querySelector('#dateoffset').value = localStorage.getItem('dateoffset') || '0'
-
-    if (localStorage.getItem('thirdNightInvitationResponse') == 'never')
-        localStorage.removeItem("thirdNightInvitationResponse");
-
 }
 
 
