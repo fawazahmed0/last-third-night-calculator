@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/fawazahmed0/last-third-night-calculator#readme",
   "dependencies": {
+    "@swc/core": "^1.15.7",
+    "@swc/html": "^1.15.7",
     "workbox-cli": "^7.4.0"
   }
 }
