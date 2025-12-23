@@ -3,5 +3,4 @@ node_modules
 .parcel-cache
 dist
 docs
-repo
 temp-secrets.txt
