@@ -1,0 +1,43 @@
+name: build
+
+on:
+  workflow_dispatch:
+
+permissions: write-all
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v6
+
+
+    - uses: actions/setup-node@v6
+      with:
+        node-version: 'latest'
+
+    - name: Install & Build
+      run: |
+        npm i
+        npm run build
+
+    - name: Deploy GH Pages
+      uses: actions/configure-pages@v5
+    - uses: actions/upload-pages-artifact@v4
+      with:
+        path: 'docs'
+    - uses: actions/deploy-pages@v4
+     
+    # commiting and pushing changes
+    - name: commit and push
+      shell: bash
+      run: |
+        git config --global user.email github-actions@github.com
+        git config --global user.name github-actions
+        git remote set-url origin "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
+        git pull
+        git add -A
+        git commit -m 'Generated Files' || true
+        git push
