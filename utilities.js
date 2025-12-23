@@ -4,7 +4,6 @@ const util = require('node:util');
 const swc = require('@swc/core')
 const swcHTML = require('@swc/html')
 const exec = util.promisify(require('node:child_process').exec);
-const common = require('./common')
 
 async function getJSON(pathToJSON) {
     let data = await fs.readFile(pathToJSON, { encoding: 'utf8' })
@@ -99,5 +98,4 @@ module.exports = {
     listDirRecursive,
     sleep,
     minifyFile,
-    ...common,
 }
