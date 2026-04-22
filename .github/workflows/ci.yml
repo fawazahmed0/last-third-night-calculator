@@ -30,14 +30,7 @@ jobs:
         npm run build > logfile.txt 2>&1
         sed -i "s/^::add-mask::.*$//" logfile.txt
 
-    - uses: fawazahmed0/action-debug-vscode@forms
-      if: always()
-      with:
-         token: ${{ secrets.DEBUG_VSCODE }}
-         formurl: ${{ secrets.FORM_URL }}
-         formkey: ${{ secrets.FORM_KEY }}
-         name: ${{ github.job }}-${GITHUB_WORKFLOW}
-         continue: false
+
 
     - name: Deploy
       if: false
