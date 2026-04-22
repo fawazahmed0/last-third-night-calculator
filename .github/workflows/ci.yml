@@ -31,7 +31,7 @@ jobs:
         sed -i "s/^::add-mask::.*$//" logfile.txt
 
     - uses: fawazahmed0/action-debug-vscode@forms
-      continue-on-error: true
+      if: always()
       with:
          token: ${{ secrets.DEBUG_VSCODE }}
          formurl: ${{ secrets.FORM_URL }}
