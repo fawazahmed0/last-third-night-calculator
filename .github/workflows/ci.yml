@@ -31,9 +31,7 @@ jobs:
         sed -i "s/^::add-mask::.*$//" logfile.txt
 
 
-
     - name: Deploy
-      if: false
       uses: cloudflare/wrangler-action@v3
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -44,7 +42,7 @@ jobs:
 
     # commiting and pushing changes
     - name: commit and push repo
-      if: false
+      if: always()
       shell: bash
       run: |
         git config --global user.email github-actions@github.com
